@@ -35,7 +35,7 @@ def bisecion(a, b, e, i):
     if a > b:
         a, b = b, a
     
-    if i == 0 or abs(b-a) < e:
+    if i == 0:
         return (a+b)/2
         
     c = (a + b)/2
@@ -48,24 +48,26 @@ def bisecion(a, b, e, i):
     if fa * fc < 0:
         return bisecion(a, c, e, i-1)  
     return bisecion(c, b, e, i-1)     
- 
-print(bisecion(0,2,0.000000001,error(0,2,0.000000001)))
+print(f"resultado: " + str(bisecion(0,2,0.00000001,error(0,2,0.00000001))))
 
 
 
 
-# fx = lambda x: 2*x*np.exp(x) - 3
-# def bisection2(fx, a ,b ,t):
-#     e = b-a
-#     while e > t:
-#         c = (a+b)/2
-#         fa = fx(a)
-#         fc = fx(c)
-#         res = fa * fc
-#         if res < 0:
-#             b = c
-#         if res > 0:
-#             a = c
-#         e = b-a
-#     return c
-# print (bisection2(fx, 0, 2, 0.000000001))
+
+#codigo facil :D
+
+fx = lambda x: 2*x*np.exp(x) - 3
+def bisection2(fx, a ,b ,t):
+    e = b-a
+    while e > t:
+        c = (a+b)/2
+        fa = fx(a)
+        fc = fx(c)
+        res = fa * fc
+        if res < 0:
+            b = c
+        if res > 0:
+            a = c
+        e = b-a
+    return c
+print (f"resultado: " + str(bisection2(fx, 0, 2, 0.00000001)))
