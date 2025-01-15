@@ -1,22 +1,23 @@
 import numpy as np
+import math
 
 
-def bisecion(a,b,e,i):
-    if a > b :
-        a,b == b,a
+# def bisecion(a,b,e,i):
+#     if a < b :
+#         a,b = b,a
     
     
-    if i == 0:
-        return (a+b)/2
-    else:
-       c = diferencia(a,b)
-       a1 = ecuacion(a)
-       b1 = ecuacion(b)
-       c1 = ecuacion(c)
-    if a1 * c1 < 0:
-            return bisecion(a1,c1,e,i-1)
-    else:
-            return bisecion(c1,b1,e,i-1)
+#     if i == 0 or (a-b) < e:
+#         return (a+b)/2
+#     else:
+#        c = (a+b)/2
+#        a1 = ecuacion(a)
+#        b1 = ecuacion(b)
+#        c1 = ecuacion(c)
+#     if a1 * c1 < 0:
+#             return bisecion(a1,c1,e,i-1)
+#     else:
+#             return bisecion(c1,b1,e,i-1)
     
     
     
@@ -29,7 +30,7 @@ def error(a,b,e):
 
 
 def ecuacion(x):
-    if x > 700:
+    if x > 100:
         return float("inf")
     
     try:
@@ -39,4 +40,44 @@ def ecuacion(x):
 
 # print(error(0,2,0.001))
 # print(ecuacion(2))
-print(bisecion(0,1,0.001,11))
+# print(bisecion(1,2,0.001,11))
+
+
+def bisecion(a, b, e, i):
+    if a > b:
+        a, b = b, a
+    
+    if i == 0 or abs(b-a) < e:
+        return (a+b)/2
+        
+    c = (a + b)/2
+    fa = ecuacion(a)
+    fb = ecuacion(b)
+    fc = ecuacion(c)
+    
+    if abs(fc) < e:
+        return c
+        
+    if fa * fc < 0:
+        return bisecion(a, c, e, i-1)  # Usar puntos, no valores de función
+    return bisecion(c, b, e, i-1)      # Usar puntos, no valores de función
+
+# Prueba
+print(bisecion(0, 2, 0.000000001, 11))
+
+
+fx = lambda x: 2*x*np.exp(x) - 3
+def bisection2(fx, a ,b ,t):
+    e = b-a
+    while e > t:
+        c = (a+b)/2
+        fa = fx(a)
+        fc = fx(c)
+        res = fa * fc
+        if res < 0:
+            b = c
+        if res > 0:
+            a = c
+        e = b-a
+    return c
+print (bisection2(fx, 0, 2, 0.000000001))
