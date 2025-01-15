@@ -1,7 +1,6 @@
 import numpy as np
 import math
 
-
 # def bisecion(a,b,e,i):
 #     if a < b :
 #         a,b = b,a
@@ -20,14 +19,8 @@ import math
 #             return bisecion(c1,b1,e,i-1)
     
     
-    
-def diferencia(a,b):
-    return (a+b)/2
-
-
 def error(a,b,e):
     return (np.log((b-a)/e))/np.log(2)
-
 
 def ecuacion(x):
     if x > 100:
@@ -38,11 +31,6 @@ def ecuacion(x):
     except OverflowError:
         return "Error"
 
-# print(error(0,2,0.001))
-# print(ecuacion(2))
-# print(bisecion(1,2,0.001,11))
-
-
 def bisecion(a, b, e, i):
     if a > b:
         a, b = b, a
@@ -52,32 +40,32 @@ def bisecion(a, b, e, i):
         
     c = (a + b)/2
     fa = ecuacion(a)
-    fb = ecuacion(b)
     fc = ecuacion(c)
     
     if abs(fc) < e:
         return c
         
     if fa * fc < 0:
-        return bisecion(a, c, e, i-1)  # Usar puntos, no valores de función
-    return bisecion(c, b, e, i-1)      # Usar puntos, no valores de función
+        return bisecion(a, c, e, i-1)  
+    return bisecion(c, b, e, i-1)     
+ 
+print(bisecion(0,2,0.000000001,error(0,2,0.000000001)))
 
-# Prueba
-print(bisecion(0, 2, 0.000000001, 11))
 
 
-fx = lambda x: 2*x*np.exp(x) - 3
-def bisection2(fx, a ,b ,t):
-    e = b-a
-    while e > t:
-        c = (a+b)/2
-        fa = fx(a)
-        fc = fx(c)
-        res = fa * fc
-        if res < 0:
-            b = c
-        if res > 0:
-            a = c
-        e = b-a
-    return c
-print (bisection2(fx, 0, 2, 0.000000001))
+
+# fx = lambda x: 2*x*np.exp(x) - 3
+# def bisection2(fx, a ,b ,t):
+#     e = b-a
+#     while e > t:
+#         c = (a+b)/2
+#         fa = fx(a)
+#         fc = fx(c)
+#         res = fa * fc
+#         if res < 0:
+#             b = c
+#         if res > 0:
+#             a = c
+#         e = b-a
+#     return c
+# print (bisection2(fx, 0, 2, 0.000000001))
