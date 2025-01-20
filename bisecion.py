@@ -56,8 +56,26 @@ import math
 
 #codigo facil :D
 
-# fx = lambda x: 2*x*np.exp(x) - 3
-fx = lambda x: np.e**x + x - 2
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 fx1 = lambda x: x * np.cos(x+1)+4
 def bisection2(fx, a ,b ,t):
     e = b-a
@@ -72,4 +90,5 @@ def bisection2(fx, a ,b ,t):
             a = c
         e = b-a
     return c
-print (f"resultado: " + str(bisection2(fx1, -2, 2, 0.000001)))
+print (f"resultado: " + 
+    str(bisection2(fx1, 7.20, 7.60, 0.001)))

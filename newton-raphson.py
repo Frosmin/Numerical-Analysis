@@ -1,13 +1,12 @@
 import numpy as np
 import math
 
-fx = lambda x :  (np.e ** -x) + x - 2
-fix = lambda x: (-np.e**-x) + 1 
+# fx = lambda x :  (np.e ** -x) + x - 2
+# fix = lambda x: (-np.e**-x) + 1 
 
 
-
-f2 = lambda x: math.cos(x + 1) - x * math.sin(x + 1)
-fx2 =lambda x: x * math.cos(x + 1) + 4
+fx =lambda x: x * math.cos(x + 1) + 4
+fix = lambda x: math.cos(x + 1) - x * math.sin(x + 1)
 
 error = lambda x2, x1: abs((x2-x1)/x2)
 def newton_raphson(fx, fix, x0, t):
@@ -18,4 +17,4 @@ def newton_raphson(fx, fix, x0, t):
         return newton_raphson(fx, fix , x1, t)
     
     
-print(newton_raphson(fx2, f2, 15, 0.001))
+print(newton_raphson(fx, fix, 7, 0.001))
