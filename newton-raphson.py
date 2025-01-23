@@ -5,8 +5,9 @@ import math
 # fix = lambda x: (-np.e**-x) + 1 
 
 
-fx =lambda x: x * math.cos(x + 1) + 4
-fix = lambda x: math.cos(x + 1) - x * math.sin(x + 1)
+fx =lambda x: x * math.cos(x + 1) + 4 #normal
+fix = lambda x: math.cos(x + 1) - x * math.sin(x + 1) #derivada
+
 
 error = lambda x2, x1: abs((x2-x1)/x2)
 def newton_raphson(fx, fix, x0, t):

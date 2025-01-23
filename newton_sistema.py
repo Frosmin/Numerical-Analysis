@@ -13,9 +13,11 @@ def f1(x, y):
     return x**2 + y**2 - 16
 def f2(x, y):
     return x + y + 2
+
 def jacobiana(x, y):
     return np.array([[2*x, 2*y],
                     [1, 1]])
+    
 def newton_raphson_sistema(x0, y0, tol=0.001, max_iter=100):
     x, y = x0, y0
     for i in range(max_iter):

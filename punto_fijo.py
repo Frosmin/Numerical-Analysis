@@ -47,12 +47,14 @@ import math
 
 
 
-def g(x):
-    return -4/np.cos(x+1)
-def punto_fijo(g, x0, tolerancia, max_iter=100):
+def f(x):
+    return -4/np.cos(x+1) #ecuaxion ya despejada
+
+
+def punto_fijo(f, x0, tolerancia, max_iter=100):
     i = 0
     while i < max_iter:
-        x1 = g(x0)
+        x1 = f(x0)
         if abs((x1-x0)/x1) < tolerancia:
             print(f"Convergió en {i} iteraciones")
             return x1
@@ -62,7 +64,7 @@ def punto_fijo(g, x0, tolerancia, max_iter=100):
     
     raise Exception("No convergió en el máximo de iteraciones")
 try:
-    resultado = punto_fijo(g, 7, 0.001)
+    resultado = punto_fijo(f, 7, 0.001)
     print(f"\nRaíz encontrada: {resultado}")
 except Exception as e:
     print(e)
