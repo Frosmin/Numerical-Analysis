@@ -24,8 +24,16 @@ def polinomio_newton(x, coef, punto):
         
     return resultado
 # Datos
-x = np.array([-1, 3/2, 4, -2.5])
-y = np.array([0, 2, 1, 3])
+
+
+# x = np.array([-1, 3/2, 4, -2.5])
+# y = np.array([0, 2, 1, 3])
+
+x = np.array([-1, -2, 0, 2])
+y = np.array([3, 0, 3, 6])
+
+
+
 coeficientes = diferencias_divididas(x, y)
 print("Coeficientes de las diferencias divididas:")
 print(coeficientes)
@@ -40,7 +48,6 @@ print()
 
 
 
-# ...existing code...
 
 # Generar puntos para la gráfica
 x_grafica = np.linspace(min(x)-0.5, max(x)+0.5, 200)

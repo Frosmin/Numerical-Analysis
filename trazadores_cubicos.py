@@ -5,6 +5,11 @@ import matplotlib.pyplot as plt
 x = np.array([-1, 0, 1, 3, 6])
 y = np.array([3, 7, 3, 5, 1])
 
+
+# x = np.array([-1, -2, 0, 2, 4])
+# y = np.array([3, 0, 3, 6, 1])
+
+
 # Número de intervalos
 n = len(x) - 1
 
