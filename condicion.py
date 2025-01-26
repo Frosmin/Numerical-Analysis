@@ -3,12 +3,11 @@ import numpy as np
 #[columna][fila]
 
 
-
 def matriz_inversa(matriz):
     # Verificar matriz cuadrada
     n = len(matriz)
     if n != len(matriz[0]):
-        return "La matriz debe ser cuadrada"
+        return None
         
     # Crear matriz aumentada [A|I]
     aumentada = []
@@ -23,31 +22,26 @@ def matriz_inversa(matriz):
     
     # Aplicar Gauss-Jordan
     for i in range(n):
-        # Hacer pivote = 1
         pivote = aumentada[i][i]
         if pivote == 0:
-            return "La matriz no tiene inversa"
+            return None
         for j in range(2*n):
             aumentada[i][j] /= pivote
             
-        # Hacer ceros en columna
         for k in range(n):
             if k != i:
                 factor = aumentada[k][i]
                 for j in range(2*n):
                     aumentada[k][j] -= factor * aumentada[i][j]
     
-    # Extraer inversa (mitad derecha)
+    # Extraer inversa
     inversa = []
     for i in range(n):
         inversa.append(aumentada[i][n:])
-        
     return inversa
 
 
-matriz= [[1,2,3,],
-         [0,0,7],
-         ]
+
 
 #sumatoria de columnas y sacar el maximo
 def norma_unitaria(matriz):
@@ -63,10 +57,6 @@ def norma_unitaria(matriz):
     return mayor
    
     
-    
-print(norma_unitaria(matriz))
-
-
 #sumatoria de filas y sacar el maximo
 def norma_infinita(matriz):
     tam_columnas = len(matriz[0])
@@ -80,4 +70,32 @@ def norma_infinita(matriz):
             mayor = suma
     return mayor
 
+
+def condicion(norma_normal , norma_inversa):
+    return norma_normal * norma_inversa
+
+
+matriz= [[1, 1/2, 1/3],
+         [1/4, 1/5, 1/6],
+         [1/7, 1/8, 1/9]]
+
+
+
+inv = matriz_inversa(matriz)
+# if inv is None:
+#     print("La matriz no tiene inversa")
+# else:
+#     print("\nMatriz inversa:")
+#     for fila in inv:
+#         print([round(x, 4) for x in fila])
+    
+ 
+print(norma_unitaria(matriz))
+print(norma_unitaria(inv))
+
 print(norma_infinita(matriz))
+print(norma_infinita(inv))
+
+
+    
+
