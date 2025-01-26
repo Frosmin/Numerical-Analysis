@@ -22,6 +22,14 @@ def gauss_jordan(matriz):
     
     return matriz
 
+
+def obtener_matriz_solucion(matriz):
+    n = len(matriz)
+    solucion = [[0] for _ in range(n)]
+    for i in range(n):
+        solucion[i][0] = matriz[i][-1]
+    return solucion
+
 #ejemplo
 matriz = [
     [2, 1, 5],  # 2x + y = 5
@@ -169,4 +177,31 @@ print(cota_infiinta)
 
 
 
+
+
 #determinar el error relativo de la solucion y compararlo con el error relativo de la matriz de coeficientes del sistema
+matriz = [
+    [2, 1, 5],  # 2x + y = 5
+    [3, 4, 6]   # 3x + 4y = 6
+]
+sistema = [[1, 1/2, 1/3, 4],
+         [1/4, 1/5, 1/6, 5],
+         [1/7, 1/8, 1/9, 6]]
+
+sistema_modificado =   [[0.9, 1/2, 1/3, 4],
+                    [1/4, 1/5, 1/6, 5],
+                    [1/7, 1/8, 1/9, 6]]
+
+Ax =obtener_matriz_solucion(gauss_jordan(sistema))
+# print(Ax)
+
+Ax_modificado = obtener_matriz_solucion(gauss_jordan(sistema_modificado))
+# print(Ax_modificado)
+
+error_solucion = error_de_matriz(Ax_modificado,Ax )
+print(error_solucion)
+
+
+#norma error relativo de la solucion
+
+#norma del error relativo de la matriz de coeficientes del sistema

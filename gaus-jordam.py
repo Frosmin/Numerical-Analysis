@@ -1,6 +1,5 @@
 import numpy as np 
 
-
 def imprimir_matriz(matriz):
     for fila in matriz:
         print([round(x, 4) for x in fila])
@@ -20,18 +19,27 @@ def gauss_jordan(matriz):
     
     return matriz
 
-
+def obtener_matriz_solucion(matriz):
+    n = len(matriz)
+    solucion = [[0] for _ in range(n)]
+    for i in range(n):
+        solucion[i][0] = matriz[i][-1]
+    return solucion
 
 matriz2 = [[4,2,5,18],
            [2,5,8,27.3],
            [2,4,3,16.20]]
 
-solucion = gauss_jordan(matriz2)
+print("Matriz aumentada original:")
 imprimir_matriz(matriz2)
 
-print("\nSolución del sistema:")
-for i in range(len(matriz2)):
-    print(f"x{i+1} = {round(solucion[i][-1], 4)}")
+solucion = gauss_jordan(matriz2)
+print("\nMatriz después de Gauss-Jordan:")
+imprimir_matriz(solucion)
+
+print("\nMatriz de solución:")
+matriz_solucion = obtener_matriz_solucion(solucion)
+imprimir_matriz(matriz_solucion)
 
 
 #ejemplo
