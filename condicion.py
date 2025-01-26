@@ -3,6 +3,32 @@ import numpy as np
 #[columna][fila]
 
 
+def imprimir_matriz(matriz):
+    for fila in matriz:
+        print([round(x, 4) for x in fila])
+
+def gauss_jordan(matriz):
+    n = len(matriz)
+    
+    for i in range(n):
+        pivote = matriz[i][i]
+        for j in range(n + 1):
+            matriz[i][j] = matriz[i][j] / pivote
+        for k in range(n):
+            if k != i:
+                factor = matriz[k][i]
+                for j in range(n + 1):
+                    matriz[k][j] -= factor * matriz[i][j]
+    
+    return matriz
+
+#ejemplo
+matriz = [
+    [2, 1, 5],  # 2x + y = 5
+    [3, 4, 6]   # 3x + 4y = 6
+]
+
+
 def matriz_inversa(matriz):
     # Verificar matriz cuadrada
     n = len(matriz)
@@ -75,7 +101,7 @@ def condicion(norma_normal , norma_inversa):
     return norma_normal * norma_inversa
 
 
-def error_matriz(matriz, matriz_con_error):
+def error_de_matriz(matriz, matriz_con_error):
      # Calcula la diferencia entre matrices
     matriz_error = np.subtract(matriz, matriz_con_error)
     return matriz_error
@@ -118,18 +144,29 @@ print(norma_infinita(inv))
 
 
 
-    
+    # condicion
 condicion_unitaria = condicion(norma_normal_unitaria, norma_inversa_unitaria)
 condicion_infinita = condicion(norma_normal_infinita, norma_inversa_infinita)
-
 print(condicion_unitaria)
 print(condicion_infinita)
 
-print (error_matriz(matriz, matriz_con_error))
-diferencia, error = error_matriz(matriz, matriz_con_error)
+    #error
+error_matriz = error_de_matriz(matriz, matriz_con_error)
+print (error_matriz)
+error_relativo_unitario =  norma_unitaria(error_matriz)/norma_unitaria(matriz)
+error_relativo_infinita =  norma_infinita(error_matriz)/norma_infinita(matriz)
 
-print("Matriz de diferencias:")
-for fila in diferencia:
-    print([round(x, 6) for x in fila])
-    
-print("\nError relativo:", round(error, 6))
+print(error_relativo_unitario)
+print(error_relativo_infinita)
+
+
+cota_unitaria = condicion_unitaria * error_relativo_unitario
+cota_infiinta = condicion_infinita * error_relativo_infinita
+print ("cota unitaria:")
+print(cota_unitaria)   
+print ("cota infinita:") 
+print(cota_infiinta)
+
+
+
+#determinar el error relativo de la solucion y compararlo con el error relativo de la matriz de coeficientes del sistema
