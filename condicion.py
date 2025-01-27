@@ -144,36 +144,40 @@ norma_inversa_unitaria = norma_unitaria(inv)
 norma_normal_infinita = norma_infinita(matriz)
 norma_inversa_infinita = norma_infinita(inv)
 
-print(norma_unitaria(matriz))
-print(norma_unitaria(inv))
+# print(norma_unitaria(matriz))
+# print(norma_unitaria(inv))
 
-print(norma_infinita(matriz))
-print(norma_infinita(inv))
+# print(norma_infinita(matriz))
+# print(norma_infinita(inv))
 
 
 
     # condicion
 condicion_unitaria = condicion(norma_normal_unitaria, norma_inversa_unitaria)
 condicion_infinita = condicion(norma_normal_infinita, norma_inversa_infinita)
+print ("Condicion unitaria normal")
 print(condicion_unitaria)
+print ("Condicion infinita normal")
 print(condicion_infinita)
 
     #error
 error_matriz = error_de_matriz(matriz, matriz_con_error)
-print (error_matriz)
+#print (error_matriz)
 error_relativo_unitario =  norma_unitaria(error_matriz)/norma_unitaria(matriz)
 error_relativo_infinita =  norma_infinita(error_matriz)/norma_infinita(matriz)
 
-print(error_relativo_unitario)
-print(error_relativo_infinita)
+# print("error relativo unitario")
+# print(error_relativo_unitario)
+# print("error relativo infinita")
+# print(error_relativo_infinita)
 
 
 cota_unitaria = condicion_unitaria * error_relativo_unitario
 cota_infiinta = condicion_infinita * error_relativo_infinita
-print ("cota unitaria:")
-print(cota_unitaria)   
-print ("cota infinita:") 
-print(cota_infiinta)
+print ("cota unitaria para el error en la solucion:")
+print(f"{cota_unitaria*100}%")   
+print ("cota infinita para el error en la solucion:") 
+print(f"{cota_infiinta*100}%")
 
 
 
@@ -199,9 +203,18 @@ Ax_modificado = obtener_matriz_solucion(gauss_jordan(sistema_modificado))
 # print(Ax_modificado)
 
 error_solucion = error_de_matriz(Ax_modificado,Ax )
-print(error_solucion)
 
 
+
+print("Norma del error relativo de la solucion unitaria y infinita:")
 #norma error relativo de la solucion
+erro_relativo_solucion_unitaria = norma_unitaria(error_solucion)/norma_unitaria(Ax_modificado)
+print(f"{erro_relativo_solucion_unitaria*100}%")
+error_realtivo_solucion_infinita = norma_infinita(error_solucion)/norma_infinita(Ax_modificado) 
+print(f"{error_realtivo_solucion_infinita*100}%")
 
-#norma del error relativo de la matriz de coeficientes del sistema
+print("Norma del error relativo de la matriz coeficientes")
+print(f"{error_relativo_unitario*100}%")
+print(f"{error_relativo_infinita*100}%")
+
+print("sistema mal condicionado")
