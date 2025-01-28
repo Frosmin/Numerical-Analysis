@@ -73,10 +73,6 @@ def matriz_inversa(matriz):
     for i in range(n):
         inversa.append(aumentada[i][n:])
     return inversa
-
-
-
-
 #sumatoria de columnas y sacar el maximo
 def norma_unitaria(matriz):
     tam_columnas = len(matriz[0])
@@ -89,8 +85,6 @@ def norma_unitaria(matriz):
         if suma > mayor:
             mayor = suma
     return mayor
-   
-    
 #sumatoria de filas y sacar el maximo
 def norma_infinita(matriz):
     tam_columnas = len(matriz[0])
@@ -103,12 +97,8 @@ def norma_infinita(matriz):
         if suma > mayor:
             mayor = suma
     return mayor
-
-
 def condicion(norma_normal , norma_inversa):
     return norma_normal * norma_inversa
-
-
 def error_de_matriz(matriz, matriz_con_error):
      # Calcula la diferencia entre matrices
     matriz_error = np.subtract(matriz, matriz_con_error)
@@ -123,6 +113,14 @@ matriz= [[1, 1/2, 1/3],
 matriz_con_error = [[0.9, 1/2, 1/3],
                      [1/4, 1/5, 1/6],
                      [1/7, 1/8, 1/9]]
+
+sistema = [[1, 1/2, 1/3, 4],
+         [1/4, 1/5, 1/6, 5],
+         [1/7, 1/8, 1/9, 6]]
+
+sistema_modificado =   [[0.9, 1/2, 1/3, 4],
+                    [1/4, 1/5, 1/6, 5],
+                    [1/7, 1/8, 1/9, 6]]
 
 
 
@@ -188,13 +186,7 @@ matriz = [
     [2, 1, 5],  # 2x + y = 5
     [3, 4, 6]   # 3x + 4y = 6
 ]
-sistema = [[1, 1/2, 1/3, 4],
-         [1/4, 1/5, 1/6, 5],
-         [1/7, 1/8, 1/9, 6]]
 
-sistema_modificado =   [[0.9, 1/2, 1/3, 4],
-                    [1/4, 1/5, 1/6, 5],
-                    [1/7, 1/8, 1/9, 6]]
 
 Ax =obtener_matriz_solucion(gauss_jordan(sistema))
 # print(Ax)
