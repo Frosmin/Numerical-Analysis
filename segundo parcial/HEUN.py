@@ -30,3 +30,6 @@ print(euler(fx, x0, y0, h, n))
 
 
 
+
+
+
