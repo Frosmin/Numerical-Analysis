@@ -86,11 +86,12 @@ def simpson(fx,a,b,c,d,n):
     hx = (b-a)/n
     hy = (d-c)/n
     print(x(fx,hx,hy,a,b,c,d,n))
-a = 1
-b = 3
-c = 2
-d = 4
-n = 4
-fx = lambda x, y: x*((x**2) + y)
+a = 0
+b = 1
+c = 1
+d = 2
+n = 8
+# fx = lambda x, y: x*((x**2) + y)
+fx = lambda x, y: np.sin(2*(x**2) + 2*y)
 
 simpson(fx,a,b,c,d,n)
