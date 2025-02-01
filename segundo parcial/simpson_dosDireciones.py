@@ -90,8 +90,9 @@ a = 0
 b = 1
 c = 1
 d = 2
-n = 200
-# fx = lambda x, y: x*((x**2) + y)
+n = 2
 fx = lambda x, y: np.sin(2*(x**2) + 2*y)
 
 simpson(fx,a,b,c,d,n)
+
+# fx = lambda x, y: x*((x**2) + y)

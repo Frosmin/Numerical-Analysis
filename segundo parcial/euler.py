@@ -8,7 +8,8 @@ fx = lambda x,y : (6*(x**2)) * y
 def euler(fx, x0, y0, h, n):
     for i in range(n+1):
         y = y0 + fx(x0, y0) * h
-        print(f"x{i} = {x0}    y{i} = {y} ")
+        print(f"x{i} = {x0} y{i} = {y0}  |  y{i+1}= {y} ")
+        # print(i)
         x0 += h
         y0 = y 
         
