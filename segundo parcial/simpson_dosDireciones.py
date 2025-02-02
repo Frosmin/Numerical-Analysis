@@ -69,6 +69,7 @@ def x(fx, hx, hy, a, b, c, d, n):
             p = 2
         res += p * y(fx, hy, c, d, x_val, n)
     return (hx/3) * res
+
 def y(fx, hy, c, d, x, n):
     res = 0
     c_original = c
@@ -82,10 +83,12 @@ def y(fx, hy, c, d, x, n):
             p = 2
         res += p * fx(x, y_val)
     return (hy/3) * res
+
 def simpson(fx,a,b,c,d,n):
     hx = (b-a)/n
     hy = (d-c)/n
     print(x(fx,hx,hy,a,b,c,d,n))
+    
 a = 0
 b = 1
 c = 1

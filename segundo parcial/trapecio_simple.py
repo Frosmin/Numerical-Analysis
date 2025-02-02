@@ -28,8 +28,10 @@ import numpy as np
 
 def error_relativo_porcentual (valorReal, valorAprox):
     return abs((valorReal - valorAprox)/valorReal)*100
+
 def hh (a,b,N):
     return (b-a)/N
+
 fx = lambda x: np.cos((np.sqrt(16-x**2))/x)
 def trapecio(a,b,N,fx):
     h = hh(a,b,N)
@@ -37,6 +39,7 @@ def trapecio(a,b,N,fx):
     for i in range(1,int(N)):
         suma += fx(a + i*h)
     return h/2*(fx(a) + 2*suma + fx(b))
+
 a = -1.5
 b = -1
 N1 = 6

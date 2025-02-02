@@ -29,9 +29,11 @@ def norma_infinita(matriz):
 
 def jacobi (x1,x2,x3,error):
     k = 0
+    
     rx1 = 1
     rx2 = 1
     rx3 = 1
+    
     rx1_anterior = 0
     rx2_anterior = 0
     rx3_anterior = 0
