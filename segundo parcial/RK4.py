@@ -9,9 +9,17 @@ k4f = lambda x,y,h: f(x + h,   y + h*k3f(x,y,h))
 
 yn = lambda k1,k2,k3,k4,h,y: y+ h/6*(k1 + 2*k2 + 2*k3 + k4)
 
+error = lambda xr,xa: abs((xr-xa)/xr)*100 
+
+valor_real = lambda x ,c : np.exp(x**3 + c)  # Implementa |y| = e^(x^3 + C)
 
 
-def RK4(f, y0, x0 ,n, maximon, h):
+
+def ERP (xa,xr):
+    return abs((xr-xa)/xr)*100
+
+
+def RK4(f, y0, x0 ,n, maximon, h,c):
     for i in range(n+1):
         k1 = k1f(x0, y0)
         k2 = k2f(x0, y0, h)
@@ -23,16 +31,20 @@ def RK4(f, y0, x0 ,n, maximon, h):
         print(f"k2 = {k2}")
         print(f"k3 = {k3}")
         print(f"k4 = {k4}")
-        print(f"y{n} = {y}")
-        print("------------------------")
+        print(f"y{i+1} = {y}")
+        
         y0 = y    
         x0 += h
+        print(f"Valor real: {valor_real(x0, c)}")
+        print(f"ERP: {ERP(y,valor_real(x0, c))} %" )
+        print("------------------------")
     return y
 
+c = 7.30985
 y0 = 0.5
 x0 = -2 
 maximo = -0.2
 h = 0.3
 n = int((maximo - x0)/h)
-print(RK4(f, y0, x0 ,n, maximo, h))
+print(RK4(f, y0, x0 ,n, maximo, h,c))
 
