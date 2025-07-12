@@ -1,9 +1,7 @@
 import numpy as np
+import math
 
-
-
-#funcion 
-f = lambda x,y: 3*(x**2)*y
+f = lambda x,y: math.log(x**y)
 
 
 k1f = lambda x,y: f(x,y)
@@ -33,16 +31,16 @@ def RK4(f, y0, x0 ,n, maximon, h,c):
         
         y0 = y    
         x0 += h
-        print(f"Valor real: {valor_real(x0, c)}")
-        print(f"ERP: {ERP(y,valor_real(x0, c))} %" )
+        #print(f"Valor real: {valor_real(x0, c)}")
+        #print(f"ERP: {ERP(y,valor_real(x0, c))} %" )
         print("------------------------")
     return y
 
 c = 7.30985
-y0 = 0.5
-x0 = -2 
-maximo = -0.2
-h = 0.3
+y0 = 1
+x0 = 1
+maximo = 2
+h = 0.25
 n = int((maximo - x0)/h)
 print(RK4(f, y0, x0 ,n, maximo, h,c))
 

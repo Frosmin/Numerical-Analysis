@@ -34,8 +34,8 @@ def gauss_saidel (x1,x2,x3,error):
     print(k)
         
     print(f"\nResultados:\nx1 = {rx1}\nx2 = {rx2}\nx3 = {rx3}")
-x1 = lambda x2, x3 : 1/5*(5 + 3*x2 - x3)
-x2 = lambda x1, x3 : 1/4*(6 - 2*x1 + x3)
-x3 = lambda x1, x2 : 1/8*(4 - 2*x1 + 3*x2)
-error= 0.009
+x1 = lambda x2, x3 : 1/3*(1 + x2 - x3)
+x2 = lambda x1, x3 : 1/6*(6 - 3*x1 - 2*x3)
+x3 = lambda x1, x2 : 1/7*(4 - 3*x1 - 3*x2)
+error= 0.01
 gauss_saidel(x1,x2,x3,error)

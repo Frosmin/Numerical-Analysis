@@ -90,11 +90,11 @@ def simpson(fx,a,b,c,d,n):
     print(x(fx,hx,hy,a,b,c,d,n))
     
 a = 0
-b = 1
+b = 2
 c = 1
-d = 2
+d = 3
 n = 2
-fx = lambda x, y: np.sin(2*(x**2) + 2*y)
+fx = lambda x, y: np.sin(x**2 +2*y)
 
 simpson(fx,a,b,c,d,n)
 
