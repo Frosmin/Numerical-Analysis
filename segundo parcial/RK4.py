@@ -3,23 +3,18 @@ import math
 
 f = lambda x,y: math.log(x**y)
 
+
 k1f = lambda x,y: f(x,y)
 k2f = lambda x,y,h: f(x + h/2, y + h/2*k1f(x,y))  
 k3f = lambda x,y,h: f(x + h/2, y + h/2*k2f(x,y,h))
 k4f = lambda x,y,h: f(x + h,   y + h*k3f(x,y,h))
-
 yn = lambda k1,k2,k3,k4,h,y: y+ h/6*(k1 + 2*k2 + 2*k3 + k4)
 
 error = lambda xr,xa: abs((xr-xa)/xr)*100 
-
-valor_real = lambda x ,c : np.exp(x**3 + c)  # Implementa |y| = e^(x^3 + C)
-
-
+valor_real = lambda x ,c : np.exp(x**3 + c)  # y = e^(x^3 + C)
 
 def ERP (xa,xr):
     return abs((xr-xa)/xr)*100
-
-
 def RK4(f, y0, x0 ,n, maximon, h,c):
     for i in range(n):
         k1 = k1f(x0, y0)
