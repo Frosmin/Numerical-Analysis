@@ -4,11 +4,11 @@ import numpy as np
 # x^2 -x -12 = 0
 
 a = 1
-b = -1
+b = -12
 c = -12
 r1 = 0
 r2 = 0
-vr = 4.00054
+vr = 2,999878
 
 def raiz(a,b,c):
     return np.sqrt(b**2 - 4*a*c)
@@ -34,3 +34,5 @@ def ERP(vr, va):
     return abs((vr - va)/vr) * 100
 
 print("error relativo porcentual: ", ERP(vr, f(a,b,c)))
+
+
